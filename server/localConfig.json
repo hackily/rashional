@@ -1,0 +1,6 @@
+{
+  "development": {
+    "appURL": "http://localhost:5000",
+    "clarifaiKey": "InsertAPIKeyHere"
+  }
+}

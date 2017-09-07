@@ -1,0 +1,21 @@
+{
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "warn",
+            2
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
+    }
+}
