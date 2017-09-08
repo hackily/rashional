@@ -1,6 +1,9 @@
 {
   "development": {
     "appURL": "http://localhost:5000",
-    "clarifaiKey": "InsertAPIKeyHere"
+    "clarifaiAPIKey": "",
+    "rashionalModelId": "rashional",
+    "mongodbConnectionString": "mongodb://<user>:<password>@ds036967.mlab.com:36967",
+    "mongodbName": "rashional"
   }
 }

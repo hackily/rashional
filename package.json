@@ -20,11 +20,13 @@
     "express-session": "^1.12.1",
     "http-proxy-middleware": "^0.9.1",
     "https-proxy-agent": "^1.0.0",
+    "mongoose": "^4.11.10",
     "passport": ">= 0.0.0",
     "passport-oauth2-middleware": "*",
     "passport-predix-oauth": "0.1.15",
     "request": "~2.67.0",
-    "url": "~0.11.0"
+    "url": "~0.11.0",
+    "winston": "^2.3.1"
   },
   "author": "",
   "devDependencies": {

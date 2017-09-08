@@ -8,7 +8,11 @@ applications:
   host: rashional
 env:
     node_env: cloud
-    clarifaiKey: #InsertAPIKeyHere
+    clarifaiAPIKey: #InsertAPIKeyHere
+    rashionalModelId: rashional
+    mongodbConnectionString: mongodb://<user>:<pass>@ds036967.mlab.com:36967
+    mongodbName: rashional
+
     #clientId: {Enter client ID, e.g. app_client_id, and place it here}
     #base64ClientCredential: dWFhLWNsaWVudC1pZDp1YWEtY2xpZW50LWlkLXNlY3JldA==
     # Following properties configured only for Timeseries WindData service Integration
