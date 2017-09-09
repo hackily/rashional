@@ -1,3 +1,5 @@
 node_modules/*
-predix-scripts/
+./public/scripts/bundle.js
 ./manifest-vpc.yml
+./manifest.yml
+./server/localConfig.json
