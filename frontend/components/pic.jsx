@@ -12,17 +12,18 @@ class Pic extends React.Component {
     return (
       <div>
         <div className="description">
-          Welcome to R<i>#</i>iOnal! A machine learning hack aimed at identifying rash's that would
-          require emergency care. Please take photo or upload a photo!
+          Welcome to R<i>#</i>iOnal! A machine learning hack aimed at identifying rash's
+          that would require emergency care. Please take photo or upload a photo!
         </div>
-        <a href="https://www.w3schools.com"><img className="camera" src="/img/camera.png"></img></a>
+
+        <div className="image-upload">
+          <label htmlFor="file-input">
+            <img src="/img/camera.png"/>
+          </label>
           <input type="file" className = "input" accept="image/*;capture=camera"></input>
-
-    </div>
-
-
+        </div>
+      </div>
     );
-
   }
 
 }

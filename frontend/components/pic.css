@@ -15,6 +15,10 @@ a{
   margin: 0 auto;
 }
 
+#file-input{
+  display: none;
+}
+
 img{
   max-width: 80%;
   margin: 0 auto;
