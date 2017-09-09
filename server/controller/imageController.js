@@ -1,3 +1,4 @@
+'use strict'
 //const express = require('express');
 const Clarifai = require('clarifai');
 const modelId = process.env['rashionalModelId'];
@@ -8,7 +9,8 @@ const ai = new Clarifai.App({
   apiKey: process.env['clarifaiAPIKey']
 });
 
-exports.predictSingleImage = function(req, res, next){
+//Receive picture from frontend as base64, as well as latitude/longitude in body.
+exports.predictSingleImage = function(req, res, next) {
   const base64Image = req.body.base64Image;
   ai.models.predict(modelId, {base64: base64Image}).then(
     function(response) {
@@ -21,6 +23,28 @@ exports.predictSingleImage = function(req, res, next){
     }
   );
 };
+
+//Takes numPictures and rashType, returns object with pictures and their URLs
+exports.getRashPictures = function(req, res, next) {
+  const numberOfImages = req.query.numImages;
+  const rashType = req.query.rashType;
+  ai.inputs.search(
+    [{
+      concept: {
+        id: rashType,
+        type: 'input',
+      }
+    }],
+    {
+      perPage: numberOfImages
+    }).then(function(data){
+      res.send(data.hits);
+
+  })
+
+
+
+}
 
 //Assume same latitude and longitude, even if there are multiple pictures.
 function generateRashPredictionModels(req, response) {

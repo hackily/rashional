@@ -1,3 +1,4 @@
+'use strict'
 const express = require('express');
 const router = express.Router();
 const imageController = require('../controller/imageController');
@@ -8,8 +9,9 @@ router.use(function(req,res,next){
 
 //Post picture to clarifai api, which will return classification.
 //Also pass in longitude/latitude
-router.post('/api/predict', imageController.predictSingleImage);
+router.post('/api/post/predict', imageController.predictSingleImage);
 
+router.get('/api/get/rashPictures', imageController.getRashPictures);
 
 
 module.exports = router;
