@@ -20,7 +20,7 @@ class Pic extends React.Component {
           <label htmlFor="file-input">
             <img src="/img/camera.png"/>
           </label>
-          <input id="file-input" ype="file" className = "input" accept="image/*;capture=camera"></input>
+          <input id="file-input" type="file" className = "input" accept="image/*;capture=camera"></input>
         </div>
       </div>
     );
