@@ -6,11 +6,7 @@
     "start": "node server/app.js",
     "test": "mocha",
     "babel-node": "babel-node --presets=es2015,react ./server/app.js",
-<<<<<<< HEAD
     "build": "browserify ./frontend/client/main.js -o ./public/scripts/bundle.js",
-=======
-    "build": "browserify ./frontend/client/main.js -o ./public/scripts/bundle.js",    
->>>>>>> Add cssify
     "build-server": "babel --presets=es2015,react ./frontend/components --out-file ./frontend/components/babelified.js",
     "build-all": "npm run build && npm run build-server",
     "watch": "watchify ./frontend/client/main.js -o public/scripts/bundle.js -dv",
