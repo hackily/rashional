@@ -9,9 +9,14 @@ const ai = new Clarifai.App({
   apiKey: process.env['clarifaiAPIKey']
 });
 
-//Receive picture from frontend as base64, as well as latitude/longitude in body.
+//Receive picture from frontend as base64, as well as latitude/longitude in body. Check api docs
 exports.predictSingleImage = function(req, res, next) {
   const base64Image = req.body.base64Image;
+  if(!base64Image){
+    const err = new Error('Please provide a valid base64Image');
+    err.status = 500;
+    return next(err);
+  }
   ai.models.predict(modelId, {base64: base64Image}).then(
     function(response) {
       const models = generateRashPredictionModels(req, response);
@@ -24,10 +29,16 @@ exports.predictSingleImage = function(req, res, next) {
   );
 };
 
-//Takes numPictures and rashType, returns object with pictures and their URLs
+//Takes numPictures and rashType, returns object with pictures and their URLs. Check api docs
+//Gets pictures of rashType from clarifai. TODO: Filter our mongodb instead?
 exports.getRashPictures = function(req, res, next) {
-  const numberOfImages = req.query.numImages;
+  const numberOfImages = req.query.numImages || 5;
   const rashType = req.query.rashType;
+  if(!rashType){
+    const err = new Error('Please provide valid rashtype variable');
+    err.status = 500;
+    return next(err);
+  }
   ai.inputs.search(
     [{
       concept: {
@@ -39,11 +50,7 @@ exports.getRashPictures = function(req, res, next) {
       perPage: numberOfImages
     }).then(function(data){
       res.send(data.hits);
-
   })
-
-
-
 }
 
 //Assume same latitude and longitude, even if there are multiple pictures.
