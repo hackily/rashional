@@ -6,7 +6,11 @@
     "start": "node server/app.js",
     "test": "mocha",
     "babel-node": "babel-node --presets=es2015,react ./server/app.js",
+<<<<<<< HEAD
     "build": "browserify ./frontend/client/main.js -o ./public/scripts/bundle.js",
+=======
+    "build": "browserify ./frontend/client/main.js -o ./public/scripts/bundle.js",    
+>>>>>>> Add cssify
     "build-server": "babel --presets=es2015,react ./frontend/components --out-file ./frontend/components/babelified.js",
     "build-all": "npm run build && npm run build-server",
     "watch": "watchify ./frontend/client/main.js -o public/scripts/bundle.js -dv",
@@ -25,6 +29,9 @@
             "react"
           ]
         }
+      ],
+      [
+        "cssify"
       ]
     ]
   },
@@ -38,6 +45,7 @@
     "chart.js": "^1.0.2",
     "clarifai": "^2.3.2",
     "cookie-parser": "~1.3.5",
+    "cssify": "^1.0.3",
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-http-proxy": "^0.6.0",
