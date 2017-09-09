@@ -7,9 +7,6 @@ const titleStyle = require('./main.css')
 class App extends React.Component {
   constructor() {
     super()
-    this.state = {
-      n: 0
-    }
   }
   render() {
     return (
@@ -17,9 +14,6 @@ class App extends React.Component {
         <div className="container">
           <div className="jumbotron">
             <h1>R<i>#</i>iOnal</h1>
-            <a href="#">
-              <span className="glyphicon glyphicon-camera"></span>
-            </a>
           </div>
         </div>
         <Pic/>
@@ -27,11 +21,7 @@ class App extends React.Component {
     );
 
   }
-  handleClick() {
-    this.setState({
-      n: this.state.n + 1
-    })
-  }
+
 }
 
 module.exports = App
