@@ -1,5 +1,5 @@
 const React = require('react');
-const Pic = require('./pic.jsx')
+const Pic = require('./pic.jsx');
 
 class App extends React.Component {
   constructor() {
