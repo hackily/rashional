@@ -9,7 +9,7 @@
     "build": "browserify ./frontend/client/main.js -o ./public/scripts/bundle.js",
     "build-server": "babel --presets=es2015,react ./frontend/components --out-file ./frontend/components/babelified.js",
     "build-all": "npm run build && npm run build-server",
-    "watch": "watchify ./frontend/client/main.js -o public/bundle.js -dv",
+    "watch": "watchify ./frontend/client/main.js -o public/scripts/bundle.js -dv",
     "docs": "apidoc -i server/ -o apidoc/",
     "preversion": "npm test",
     "version": "git add package.json && git commit -m \"version bump\"",
