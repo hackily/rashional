@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node server/app.js",
     "test": "mocha",
+    "docs": "apidoc -i server/ -o apidoc/",
     "preversion": "npm test",
     "version": "git add package.json && git commit -m \"version bump\"",
     "postversion": "git push"

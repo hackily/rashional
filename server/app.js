@@ -31,11 +31,6 @@ const mongoose = require('mongoose');
 const mgPromise = mongoose.connect(process.env.mongodbConnectionString + "/" + process.env.mongodbName, {useMongoClient: true}).then(function(db){
   logger.debug('connected');
 })
-// mongoose.connect("mongodb://rashional:rashional@ds036967.mlab.com:36967/rashional");
-
-
-
-
 
 const index = require('./routes/index');
 
@@ -48,12 +43,13 @@ SETTING UP EXRESS SERVER
 var app = express();
 
 app.set('trust proxy', 1);
-app.use(cookieParser('rashional'));
+//app.use(cookieParser('rashional')); //
+
 // Initializing default session store
 // *** Use this in-memory session store for development only. Use redis for prod. **
 app.use(session({
   secret: 'rashional',
-  name: 'cookie_name',
+  name: 'rashionalCookie',
   proxy: true,
   resave: true,
   saveUninitialized: true
@@ -83,9 +79,12 @@ app.get('/favicon.ico', function (req, res) {
 app.use('/', index); //Main router
 
 ////// error handlers //////
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler.
 app.use(function(err, req, res, next) {
   logger.error(err.stack);
+  if(err.status){
+    next(err);
+  }
   err = new Error('Not Found');
   err.status = 404;
   next(err);

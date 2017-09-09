@@ -7,4 +7,9 @@ This is an application that uses Machine Learning to identify if a rash might be
 > npm i
 > npm start
 
-And you're up and going.
+And you're up and going. The server will be locally hosted at http://localhost:5000/
+
+[Check out the Api documentation](apidoc/index.html)
+
+Use the following command to regenerate documentation.
+>npm run docs
