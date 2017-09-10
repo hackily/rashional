@@ -1,26 +1,28 @@
 import React from 'react';
 const bootstrap = require('./css/bootstrap.min.css')
 const locationCards = require('./materialize-css/dist/css/materialize.css')
-// const locationCards_1 = require('./materialize-css/dist/js/materialize.js')
-
+//const locationCards_1 = require('./materialize-css/dist/js/materialize.js')
 const locationCss = require('./locationCards.css')
 
 
-class Location extends React.Component{
+class LocationCards extends React.Component{
   constructor(props){
     super()
+    this.state = {
+      data: props.data
+    }
   }
 
   render(){
     return(
-      <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-content">
-              <p> <b>Name: </b>{this.props.name}<br />
-                  <b>Phone Number: </b>{this.props.phone}<br />
-                  <b>Distance: </b>{this.props.distance}<br />
-                  <b>Website: </b><a href='{this.props.url}'>{this.props.url}</a>
+      <div className="row">
+        <div className="col s12 m7">
+          <div className="card">
+            <div className="card-content">
+              <p> <b>Name: </b>{this.state.data.name}<br />
+                  <b>Phone Number: </b>{this.state.data.phone}<br />
+                  <b>Distance: </b>{this.state.data.distance}<br />
+                  <b>Website: </b><a href='{this.state.data.url}'>{this.state.data.url}</a>
               </p>
             </div>
           </div>
@@ -31,4 +33,4 @@ class Location extends React.Component{
 }
 
 
-module.exports = locationCards;
+module.exports = LocationCards;

@@ -1,16 +1,16 @@
 const React         = require('react');
 const axios         = require('axios');
 const _             = require('lodash');
-const Message       = require('./message.jsx')
+const Message       = require('./message.jsx');
 const Pic           = require('./pic.jsx');
-const bootstrap     = require('./css/bootstrap.min.css')
-const bootstrap_1   = require('./css/bootstrap.css')
-const titleStyle    = require('./main.css')
-const RashChart     = require('./rashChart.jsx')
-const rashChart     = require('./rashChart.css')
-const locationCards = require('./locationCards.jsx')
-const locationCss   = require('./locationCards.css')
-const locationCards_3 = require('./materialize-css/dist/css/materialize.css')
+const bootstrap     = require('./css/bootstrap.min.css');
+//const bootstrap_1   = require('./css/bootstrap.css')
+const titleStyle    = require('./main.css');
+const RashChart     = require('./rashChart.jsx');
+const rashChart     = require('./rashChart.css');
+const LocationCards = require('./locationCards.jsx');
+//const locationCss   = require('./locationCards.css')
+// const locationCards_3 = require('./materialize-css/dist/css/materialize.css')
 
 class App extends React.Component {
   constructor() {
@@ -25,36 +25,27 @@ class App extends React.Component {
      predictionData: {},
      latitude: 0,
      longitude: 0,
-     cardData:[
-        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'}
-      ]
+     cardData:[]
     }
     this.getLocation(); 
 }
 
   handleClick () {
-    //this.setState({ n: this.state.n + 1 })
-    this.state.data[0].y = this.state.data[0].y + 50;
-    this.refs.rashChart.updateChart();
+    this.setState({
+      cardData: null
+    })
   }
 
-  generateCards () {
 
-    cardHTML = ""
-
-    for (i = 0; i < this.state.cardData.length ; i++) {
-      locationLine = "<locationCards id='location"+i.toString()+"+' ref='locationsCards' data = {this.state.cardData"+i.toString()+"}/>"
-      cardHTML = cardHTML + locationLine
-    }
-    console.log(cardHTML)
-    return cardHTML
+  createCard (cd) {
+    if(!cd) return;
+    return <LocationCards data = {cd}/>;
   }
 
-  //cardBlock = generateCards();
+  createCards (cds) {
+    if(!cds) return;
+    return cds.map(this.createCard);
+  }
 
   render() {
     return (
@@ -64,13 +55,20 @@ class App extends React.Component {
             <h1>Rashi<img className="heart" src="/img/heard.png"></img>nal</h1>
           </div>
         </div>
+        <button onClick={this.handleClick.bind(this)}>click me!</button>
         <Pic onPicture={this.postPicture.bind(this)}/>
         <Message/>
-        <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData} />
-        <locationCards id="location" ref="locationsCards" data = {this.state.cardData}/>
+        <div id="rash-chart-container">
+          <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData} />
+        </div>
+        <div id="location-card-container">
+          {this.createCards(this.state.cardData)}
+        </div>
       </div>
     )
   }
+  
+  // <LocationCards id="location" ref="locationsCards" data = {this.state.cardData[0]}/>
 
   //Get location and then update state with values
   getLocation() {
@@ -93,7 +91,7 @@ class App extends React.Component {
       const data = res.data;
       this.setState({ predictionData: res.data })
       this.initChartData(res.data);
-      console.log(data);
+      this.initCareCards(this.state.latitude, this.state.longitude);
     })
     .catch((err) => {
       console.log(err);
@@ -116,6 +114,36 @@ class App extends React.Component {
       this.refs.rashChart.updateChart();
     });
   }
+
+  initCareCards(latitude, longitude) {
+    axios.get('/api/get/clinics', {
+      params: {
+        'latitude': latitude,
+        'longitude': longitude
+      }
+    })
+    .then( (response) => {
+      let clinicList = [];
+      _.each(response.data, (datum) => {
+        let clinicObj = {
+          name: datum.name,
+          phone: datum.phone,
+          url: datum.url,
+          distance: datum.distanceFromUser
+        }
+        clinicList.push(clinicObj);
+      });
+      this.state.cardData = clinicList;
+      this.setState({
+        cardData: clinicList
+      })
+      //this.forceUpdate();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
 
 }
 
