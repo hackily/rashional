@@ -52,7 +52,7 @@ padding-bottom: 5%;
 }
 
 #results-container {
-  visibility: show;
+  visibility: hidden;
 }
 
 @media (max-width:480px){

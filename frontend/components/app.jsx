@@ -17,10 +17,6 @@ class App extends React.Component {
     super()
     this.state = {
       rashChartData: [
-        {x: 'Lyme Disease', y: 0.59},
-        {x: 'Ringworm', y: 0.37},
-        {x: 'Shingles', y: 0.5},
-        {x: 'Rocky Mountain Spotted Fever', y: 0.4},
      ],
      predictionData: {},
      latitude: 0,
