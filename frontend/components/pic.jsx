@@ -1,6 +1,7 @@
 const React = require('react');
-const boxStyle = require('./pic.css')
 const bootstrap = require('./css/bootstrap.min.css')
+const boxStyle = require('./pic.css')
+
 // const bootstrap_1 = require('./css/bootstrap-grid.css')
 
 class Pic extends React.Component {
@@ -27,28 +28,39 @@ class Pic extends React.Component {
 
 }
 
-function makeRequest(method, url) {
-  return new Promise(function(resolve, reject) {
+function makeRequest (method, url, body) {
+  return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url);
-    xhr.onload = function() {
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.onload = function () {
       if (this.status >= 200 && this.status < 300) {
         resolve(xhr.response);
       } else {
-        reject({status: this.status, statusText: xhr.statusText});
+        reject({
+          status: this.status,
+          statusText: xhr.statusText
+        });
       }
     };
-    xhr.onerror = function() {
-      reject({status: this.status, statusText: xhr.statusText});
+    xhr.onerror = function () {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText
+      });
     };
-    xhr.send();
+    xhr.send(body);
   });
 }
 
-makeRequest('POST', '/api/post/predict').then(function(datums) {
-  console.log(datums);
-}).catch(function(err) {
-  console.error('Augh, there was an error! hehe:(', err.statusText);
+var data = "base64Image=asdf";
+makeRequest('POST', '/api/post/predict', body)
+.then(function (data) {
+  console.log(data);
+})
+.catch(function (err) {
+  console.error('Augh, there was an error!', err.statusText);
 });
 
 module.exports = Pic;

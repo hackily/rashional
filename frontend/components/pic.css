@@ -23,8 +23,11 @@ img{
   max-width: 80%;
   margin: 0 auto;
   max-height: 80%;
-  /*background: url("/img/camera.png");*/
   background-size: cover;
+  display: block;
+}
+
+label{
   display: block;
 }
 

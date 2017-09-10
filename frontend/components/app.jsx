@@ -1,10 +1,11 @@
 const React = require('react');
 const Message = require('./message.jsx')
-const RashChart = require('./rashChart.jsx')
 const Pic = require('./pic.jsx');
 const bootstrap = require('./css/bootstrap.min.css')
 const bootstrap_1 = require('./css/bootstrap.css')
 const titleStyle = require('./main.css')
+const RashChart = require('./rashChart.jsx')
+
 
 class App extends React.Component {
   constructor() {
@@ -19,7 +20,7 @@ class App extends React.Component {
       {x: 'G', y: 5}
     ]
   }
-    
+
   }
 
   handleClick () {
@@ -36,7 +37,7 @@ class App extends React.Component {
           </div>
         </div>
         <Pic/>
-     
+
     <div>
       <h1>clicked {this.state.n} times</h1>
       <button onClick={this.handleClick.bind(this)}>click me!</button>
