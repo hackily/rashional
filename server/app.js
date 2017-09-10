@@ -56,8 +56,8 @@ app.use(session({
 }));
 
 //Initializing application modules
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 var server = app.listen(process.env.VCAP_APP_PORT || 5000, function () {
   logger.debug('Server started on port: ' + server.address().port);
