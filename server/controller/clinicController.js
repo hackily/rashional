@@ -39,7 +39,7 @@ function parseClinicResponse(latitude, longitude, data){
     latitude: data.lat,
     longitude: data.lng,
     address: {
-      address: data.address.address,
+      address: data.address.thoroughfare,
       locality: data.address.locality,
       postal_code: data.address.postal_code,
       country: data.address.country,

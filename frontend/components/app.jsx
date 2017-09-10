@@ -156,7 +156,8 @@ class App extends React.Component {
           name: datum.name,
           phone: datum.phone,
           url: datum.url,
-          distance: datum.distanceFromUser
+          distance: datum.distanceFromUser,
+          address: datum.address.address
         }
         clinicList.push(clinicObj);
       });
