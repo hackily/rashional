@@ -19,21 +19,38 @@ router.use(function(req,res,next){
  * @apiDescription
  *   Latitude and Longitude will be returned back in the response if they are present.
  * 
- * @apiSuccess {Object} foo
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *       {
- *        "url": "https://s3.amazonaws.com/clarifai-api/img2/prod/small/ce624aa372f2461bbff7dc3523c701f2/d7a154589c8a4788b4b13fff667de22f",
- *        "isBase64": true,
- *        "timestamp": 1504963997833,
- *        "Ringworm": 0.5087677,
- *        "Lyme Disease": 0.49123228,
- *        "prediction": "Ringworm",
- *        "predictionValue": 0.5087677,
- *        "latitude": 0,
- *        "longitude": 0,
- *        "_id": "59b3ed9d39be26ae69079e01"
- *      }
+ *     {
+ *       "url": "https://s3.amazonaws.com/clarifai-api/img2/prod/small/ce624aa372f2461bbff7dc3523c701f2/e3d9ac9c0bd54214a867e2612cc8e76b",
+ *       "isBase64": true,
+ *       "timestamp": 1505012966938,
+ *       "prediction": "Lyme Disease",
+ *       "predictionValue": 0.5936046,
+ *       "_id": "59b4ace645e1c80c07c3ffca",
+ *       "disease": [
+ *         {
+ *           "name": "Lyme Disease",
+ *           "value": 0.5936046,
+ *           "_id": "59b4ace645e1c80c07c3ffce"
+ *         },
+ *         {
+ *           "name": "Ringworm",
+ *           "value": 0.18937705,
+ *           "_id": "59b4ace645e1c80c07c3ffcd"
+ *         },
+ *         {
+ *           "name": "Rocky Mountain Spotted Fever",
+ *           "value": 0.0014674516,
+ *           "_id": "59b4ace645e1c80c07c3ffcc"
+ *         },
+ *         {
+ *           "name": "Shingles",
+ *           "value": 0.0006593264,
+ *           "_id": "59b4ace645e1c80c07c3ffcb"
+ *         }
+ *       ]
+ *     }
  */
 router.post('/api/post/predict', imageController.predictSingleImage);
 
