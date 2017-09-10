@@ -54,7 +54,7 @@ class App extends React.Component {
     return cardHTML
   }
 
-  cardBlock = generateCards()
+  //cardBlock = generateCards();
 
   render() {
     return (
