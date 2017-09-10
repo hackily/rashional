@@ -19,7 +19,7 @@ class RashChart extends React.Component {
 
   updateChart () {
     console.log("Data called!", this.state, this.state.data[0].y)
-    //this.forceUpdate()
+    this.forceUpdate()
   }
 
   render () {
