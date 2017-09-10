@@ -2,11 +2,14 @@ const React = require('react');
 const bootstrap = require('./css/bootstrap.min.css')
 const boxStyle = require('./pic.css')
 
-// const bootstrap_1 = require('./css/bootstrap-grid.css')
-
 class Pic extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
+    this.props = props;
+    this.state = {
+      imageFile: {},
+      base64Image: ''
+    }
   }
 
   render() {
@@ -15,53 +18,34 @@ class Pic extends React.Component {
         <div className="description">
           Welcome to R<i>#</i>iOnal! A machine learning hack aimed at identifying rash's that would require emergency care. Please take or upload a photo!
         </div>
-
         <div className="image-upload">
           <label htmlFor="file-input">
             <img src="/img/camera.png"/>
           </label>
-          <input id="file-input" type="file" className="input" accept="image/*;capture=camera"></input>
+          <input id="file-input" type="file" className="input" accept="image/*;capture=camera" onChange={(e) => this.readFile(e)}></input>
         </div>
       </div>
     );
   }
 
-}
-
-function makeRequest (method, url, body) {
-  return new Promise(function (resolve, reject) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.setRequestHeader("cache-control", "no-cache");
-    xhr.onload = function () {
-      if (this.status >= 200 && this.status < 300) {
-        resolve(xhr.response);
-      } else {
-        reject({
-          status: this.status,
-          statusText: xhr.statusText
-        });
-      }
-    };
-    xhr.onerror = function () {
-      reject({
-        status: this.status,
-        statusText: xhr.statusText
+  readFile(data) {
+    const files = data.target.files;
+    const self = this;
+    if(files && files[0] ) {
+    let reader = new FileReader();
+    let file = files[0];
+    reader.onloadend = () => {
+      let splitFile = reader.result.split(',');
+      this.setState({
+        imageFile: file,
+        base64Image: splitFile[1]
       });
-    };
-    xhr.send(body);
-  });
-}
-//Get image, base64 it,  (compress?) then URI encode it
-var uriEncodedData = "base64Image=asdf";
-makeRequest('POST', '/api/post/predict', uriEncodedData)
-.then(function (data) {
+      this.props.onPicture(this.state.base64Image);
+    }
+    reader.readAsDataURL(file)
+    }
+  };
 
-  console.log(data);
-})
-.catch(function (err) {
-  console.error('Augh, there was an error!', err.statusText);
-});
+}
 
 module.exports = Pic;

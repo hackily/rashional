@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const imageController = require('../controller/imageController');
 const clinicController = require('../controller/clinicController');
+const mockPredict = require('../sampleData/postPredict.json');
 
 router.use(function(req,res,next){
   next(); // console.log('index.html from router - index.js');
@@ -53,6 +54,9 @@ router.use(function(req,res,next){
  *     }
  */
 router.post('/api/post/predict', imageController.predictSingleImage);
+router.post('/api/post/mockPredict', function(req, res, next){
+  res.send(mockPredict);
+})
 
 /**
  * @api {get} /api/get/rashPictures Get Rash Pictures

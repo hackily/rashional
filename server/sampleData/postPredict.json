@@ -1,0 +1,30 @@
+{
+  "url": "https://s3.amazonaws.com/clarifai-api/img2/prod/small/ce624aa372f2461bbff7dc3523c701f2/e3d9ac9c0bd54214a867e2612cc8e76b",
+  "isBase64": true,
+  "timestamp": 1505012966938,
+  "prediction": "Lyme Disease",
+  "predictionValue": 0.5936046,
+  "_id": "59b4ace645e1c80c07c3ffca",
+  "disease": [
+      {
+          "name": "Lyme Disease",
+          "value": 0.5936046,
+          "_id": "59b4ace645e1c80c07c3ffce"
+      },
+      {
+          "name": "Ringworm",
+          "value": 0.18937705,
+          "_id": "59b4ace645e1c80c07c3ffcd"
+      },
+      {
+          "name": "Rocky Mountain Spotted Fever",
+          "value": 0.0014674516,
+          "_id": "59b4ace645e1c80c07c3ffcc"
+      },
+      {
+          "name": "Shingles",
+          "value": 0.0006593264,
+          "_id": "59b4ace645e1c80c07c3ffcb"
+      }
+  ]
+}
