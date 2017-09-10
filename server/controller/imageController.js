@@ -65,7 +65,8 @@ function generateRashPredictionModels(req, response) {
       "isBase64": prediction.input.data.image.base64,
       "latitude": latitude,
       "longitude": longitude,
-      "timestamp": new Date().getTime()
+      "timestamp": new Date().getTime(),
+      "disease": []
     };
     //Insert each new concept into the model data
     let predictionName = '';
@@ -78,7 +79,7 @@ function generateRashPredictionModels(req, response) {
         predictionVal = afflictionValue;
         predictionName = afflictionName;
       }
-      modelData[afflictionName] = concept.value;
+      modelData.disease.push({'name': afflictionName, 'value': afflictionValue});
     }
     modelData.prediction = predictionName;
     modelData.predictionValue = predictionVal;

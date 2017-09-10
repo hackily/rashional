@@ -4,8 +4,12 @@ const rashPredictionSchema = mongoose.Schema({
   id: String,
   url: String,
   isBase64: Boolean,
-  "Lyme Disease": Number,
-  Ringworm: Number,
+  disease: [
+    {
+      name: String,
+      value: Number
+    }
+  ],
   latitude: Number,
   longitude: Number,
   prediction: String,

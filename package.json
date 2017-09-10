@@ -49,7 +49,6 @@
     "passport": ">= 0.0.0",
     "passport-oauth2-middleware": "*",
     "passport-predix-oauth": "0.1.15",
-    "querystring": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.2.0",
