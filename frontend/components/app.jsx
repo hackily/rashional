@@ -25,7 +25,8 @@ class App extends React.Component {
      predictionData: {},
      latitude: 0,
      longitude: 0,
-     cardData:[]
+     cardData:[],
+     lang: null
     }
     this.getLocation();
 }
@@ -57,16 +58,18 @@ class App extends React.Component {
         </div>
         {/* <button onClick={this.handleClick.bind(this)}>click me!</button> */}
         <Pic onPicture={this.postPicture.bind(this)}/>
-        <Message/>
-        <div id="rash-chart-container">
-          <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData} />
+        <Message ref="chartLabel"/>
+        <div id="results-container">
+          <div id="rash-chart-container">
+            <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData}/>
+          </div>
+          <section id="cta">
+            <header>
+              <h2>Ready to take control of your health?</h2>
+              <h5>We have taken the liberty of finding you several free clinics nearby.</h5>
+            </header>
+          </section>
         </div>
-				<section id="cta">
-					<header>
-						<h2>Ready to take control of your health?</h2>
-						<h5>We have taken the liberty of finding you several free clinics nearby.</h5>
-					</header>
-				</section>
 
         <div id="location-card-container">
           {this.createCards(this.state.cardData)}
@@ -95,14 +98,35 @@ class App extends React.Component {
       'latitude': this.state.latitude,
       'longitude': this.state.longitude
     }).then((res) => {
+      document.getElementById('results-container').style.visibility = "visible";
       const data = res.data;
+      
       this.setState({ predictionData: res.data })
       this.initChartData(res.data);
+      this.setPredictionText(res.data, this.state.lang);
       this.initCareCards(this.state.latitude, this.state.longitude);
     })
     .catch((err) => {
       console.log(err);
     });
+  }
+
+  setPredictionText(data, lang){
+    const truncateValue = (data.predictionValue*100).toFixed(2);
+    //Default english
+    if(!lang){
+      this.refs.chartLabel.state.alarm = "Predictive Analytics";
+      if(data.predictionValue < 0.25){
+        this.refs.chartLabel.state.confidenceText = `We are ${truncateValue}% confident that you may have ${data.prediction}. Thanks for using our service, but we stress that we are still experimental, and can be wrong.`
+        return;
+      }
+      if(data.predictionValue > 0.25){
+        this.refs.chartLabel.state.confidenceText = `We are ${truncateValue}% confident that you may have ${data.prediction}. We strongly recommend getting an expert opinion.`
+        return;
+      }
+    } else {
+      this.refs.alarm = ""
+    }
   }
 
   //Format our data, set it in the state. Then update the chart!
@@ -111,7 +135,7 @@ class App extends React.Component {
     _.each(arr.disease, (disease) => {
       const obj = {
         'x': disease.name,
-        'y': disease.value*100
+        'y': disease.value*100  
       };
       formattedData.push(obj);
     });

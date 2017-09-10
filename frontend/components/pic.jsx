@@ -22,7 +22,7 @@ class Pic extends React.Component {
         </div>
         <div id ="start" className="image-upload">
           <label htmlFor="file-input">
-            <img src="/img/camera.png"/>
+            <img className="upload-picture" src="/img/camera.png"/>
           </label>
           <input id="file-input" type="file" className="input" accept="image/*;capture=camera" onChange={(e) => this.readFile(e)}></input>
         </div>

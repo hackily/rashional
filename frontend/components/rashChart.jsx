@@ -20,7 +20,8 @@ class RashChart extends React.Component {
     colorBars
     axisLabels={{x: 'Rash Source', y: 'Estimated Probability of Cause'}}
     axes
-    height = {500}    
+    height = {500}
+    width = {500}
     data={this.state.data}
     yDomainRange={[0,100]}
     />

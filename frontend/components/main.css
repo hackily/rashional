@@ -32,10 +32,45 @@ img.heart{
   display: inline-block;
 }
 
+.confidence-text{
+ padding: 0 2em; 
+}
+
 
 #graph {
-  height: 25%;
-  width: 100%;
-  display: inline-block;
-  padding-right: 25%;
+  margin: 0 20%;
+display: block;  margin: 0 auto;
 }
+
+
+.description{
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+  font-size: 160%;
+padding-bottom: 5%;
+}
+
+#results-container {
+  visibility: show;
+}
+
+@media (max-width:480px){
+  .description{
+    padding: 0 2em;
+    text-align: center;
+    font-size: 160%;
+  padding-bottom: 5%;
+  }
+
+}
+
+@media (max-width:1024px){
+  .description{
+    padding: 0 2em;
+    text-align: center;
+    font-size: 160%;
+  padding-bottom: 5%;
+  }
+}
+
