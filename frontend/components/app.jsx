@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const React         = require('react');
 const axios         = require('axios');
 const _             = require('lodash');
@@ -11,27 +10,11 @@ const RashChart     = require('./rashChart.jsx')
 const rashChart     = require('./rashChart.css')
 const locationCards = require('./locationCards.jsx')
 const locationCss   = require('./locationCards.css')
-=======
-const React = require('react');
-const Message = require('./message.jsx')
-const Pic = require('./pic.jsx');
-const bootstrap = require('./css/bootstrap.min.css')
-const bootstrap_1 = require('./css/bootstrap.css')
 const locationCards_3 = require('./materialize-css/dist/css/materialize.css')
-const RashChart = require('./rashChart.jsx')
-const rashChart = require('./rashChart.css')
-const locationCards = require('./locationCards.jsx')
-const locationCss = require('./locationCards.css')
-const titleStyle = require('./main.css')
-const babel = require('babel-core')
->>>>>>> Update
-
-
 
 class App extends React.Component {
   constructor() {
     super()
-<<<<<<< HEAD
     this.state = {
       rashChartData: [
         {x: 'Lyme Disease', y: 0.59},
@@ -41,33 +24,18 @@ class App extends React.Component {
      ],
      predictionData: {},
      latitude: 0,
-     longitude: 0
+     longitude: 0,
+     cardData:[
+        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
+        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
+        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
+        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
+        {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'}
+      ]
     }
-=======
-    this.state = {data: [
-      {x: 'A', y: 20},
-      {x: 'B', y: 30},
-      {x: 'C', y: 40},
-      {x: 'D', y: 20},
-      {x: 'E', y: 40},
-      {x: 'F', y: 25},
-      {x: 'G', y: 5}
-    ],
-    cardData:[
-      {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-      {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-      {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-      {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'},
-      {name: 'Johns Hopkins Medical Services',phone: '1 (410)-874-1486', distance: '14.45699 mi',url: 'http://www.hopkinsmedicine.org/patients/odenton/index.html'}
-    ]
-  }
->>>>>>> Update
+    this.getLocation(); 
+}
 
-    this.getLocation();
-  }
-
-<<<<<<< HEAD
-=======
   handleClick () {
     //this.setState({ n: this.state.n + 1 })
     this.state.data[0].y = this.state.data[0].y + 50;
@@ -79,7 +47,7 @@ class App extends React.Component {
     cardHTML = ""
 
     for (i = 0; i < this.state.cardData.length ; i++) {
-      locationLine = "<locationCards id='location"+i.toString()"+' ref='locationsCards' data = {this.state.cardData"+i.toString()+"}/>"
+      locationLine = "<locationCards id='location"+i.toString()+"+' ref='locationsCards' data = {this.state.cardData"+i.toString()+"}/>"
       cardHTML = cardHTML + locationLine
     }
     console.log(cardHTML)
@@ -88,10 +56,9 @@ class App extends React.Component {
 
   cardBlock = generateCards()
 
->>>>>>> Update
   render() {
     return (
-      <div>
+      <div id = "outer">
         <div className="container">
           <div className="jumbotron">
             <h1>Rashi<img className="heart" src="/img/heard.png"></img>nal</h1>
@@ -99,15 +66,8 @@ class App extends React.Component {
         </div>
         <Pic onPicture={this.postPicture.bind(this)}/>
         <Message/>
-<<<<<<< HEAD
         <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData} />
-        <locationCards/>
-=======
-        <div>
-          <RashChart id ="chart" ref="rashChart" data = {this.state.data} />
-        </div>
-        // <locationCards id="location" ref="locationsCards" data = {this.state.cardData}/>
->>>>>>> Update
+        <locationCards id="location" ref="locationsCards" data = {this.state.cardData}/>
       </div>
     )
   }
@@ -159,9 +119,4 @@ class App extends React.Component {
 
 }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> Update
 module.exports = App;
