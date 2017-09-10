@@ -1,13 +1,16 @@
-const React        = require('react');
-const axios        = require('axios');
-const _            = require('lodash');
-const Message      = require('./message.jsx')
-const Pic          = require('./pic.jsx');
-const bootstrap    = require('./css/bootstrap.min.css')
-const bootstrap_1  = require('./css/bootstrap.css')
-const titleStyle   = require('./main.css')
-const RashChart    = require('./rashChart.jsx')
-const rashChart    = require('./rashChart.css')
+const React         = require('react');
+const axios         = require('axios');
+const _             = require('lodash');
+const Message       = require('./message.jsx')
+const Pic           = require('./pic.jsx');
+const bootstrap     = require('./css/bootstrap.min.css')
+const bootstrap_1   = require('./css/bootstrap.css')
+const titleStyle    = require('./main.css')
+const RashChart     = require('./rashChart.jsx')
+const rashChart     = require('./rashChart.css')
+const locationCards = require('./locationCards.jsx')
+const locationCss   = require('./locationCards.css')
+
 
 
 class App extends React.Component {
@@ -33,12 +36,13 @@ class App extends React.Component {
       <div>
         <div className="container">
           <div className="jumbotron">
-            <h1>R<i>#</i>iOnal</h1>
+            <h1>Rashi<img className="heart" src="/img/heard.png"></img>nal</h1>
           </div>
         </div>
         <Pic onPicture={this.postPicture.bind(this)}/>
         <Message/>
         <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData} />
+        <locationCards/>
       </div>
     )
   }
