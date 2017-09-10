@@ -16,7 +16,9 @@ class Pic extends React.Component {
     return (
       <div>
         <div className="description">
-          Welcome to R<i>#</i>iOnal! A machine learning hack aimed at identifying rash's that would require emergency care. Please take or upload a photo!
+          Welcome to <b>Rashional</b>! A machine learning hack aimed at
+          identifying rash's that would require emergency care.
+          Please take or upload a photo for a predictive analysis!
         </div>
         <div className="image-upload">
           <label htmlFor="file-input">

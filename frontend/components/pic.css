@@ -19,6 +19,12 @@ a{
   display: none;
 }
 
+img.heart{
+  width: 7%;
+  display: inline-block;
+}
+
+
 img{
   max-width: 80%;
   margin: 0 auto;

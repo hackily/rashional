@@ -7,7 +7,7 @@ const locationCss = require('./locationCards.css')
 
 
 class Location extends React.Component{
-  constructor(){
+  constructor(props){
     super()
   }
 
@@ -16,19 +16,16 @@ class Location extends React.Component{
       <div class="row">
         <div class="col s12 m7">
           <div class="card">
-            <div class="card-image">
-              <span class="card-title">{this.props.name}</span>
-            </div>
             <div class="card-content">
-              <p> <b>Phone Number: </b>{this.props.phons}<br />
-                  <b>Distance from you:</b>{this.props.distance}<br />
-                  <b>Website:</b>{this.props.url}
+              <p> <b>Name: </b>{this.props.name}<br />
+                  <b>Phone Number: </b>{this.props.phone}<br />
+                  <b>Distance: </b>{this.props.distance}<br />
+                  <b>Website: </b><a href='{this.props.url}'>{this.props.url}</a>
               </p>
             </div>
           </div>
         </div>
       </div>
-
     );
   }
 }
