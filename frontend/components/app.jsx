@@ -51,16 +51,23 @@ class App extends React.Component {
     return (
       <div id = "outer">
         <div className="container">
-          <div className="jumbotron">
+          {/* <div className="jumbotron">
             <h1>Rashi<img className="heart" src="/img/heard.png"></img>nal</h1>
-          </div>
+          </div> */}
         </div>
-        <button onClick={this.handleClick.bind(this)}>click me!</button>
+        {/* <button onClick={this.handleClick.bind(this)}>click me!</button> */}
         <Pic onPicture={this.postPicture.bind(this)}/>
         <Message/>
         <div id="rash-chart-container">
           <RashChart id ="chart" ref="rashChart" data = {this.state.rashChartData} />
         </div>
+				<section id="cta">
+					<header>
+						<h2>Ready to take control of your <strong>health</strong>?</h2>
+						<h5>We have taken the liberty of finding you several free clinics nearby.</h5>
+					</header>
+				</section>
+
         <div id="location-card-container">
           {this.createCards(this.state.cardData)}
         </div>
