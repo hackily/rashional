@@ -1,9 +1,8 @@
 'use strict'
-//const express = require('express');
-const Clarifai = require('clarifai');
-const modelId = process.env['rashionalModelId'];
-const logger = require('winston');
-const rashPrediction = require('../model/rashPrediction');
+const Clarifai       = require('clarifai');
+const modelId        = process.env['rashionalModelId'];
+const logger         = require('winston');
+const RashPrediction = require('../model/rashPrediction');
 
 const ai = new Clarifai.App({
   apiKey: process.env['clarifaiAPIKey']
@@ -83,7 +82,7 @@ function generateRashPredictionModels(req, response) {
     }
     modelData.prediction = predictionName;
     modelData.predictionValue = predictionVal;
-    const model = new rashPrediction.rashPrediction(modelData);
+    const model = new RashPrediction.rashPrediction(modelData);
     modelArr.push(model);
     model.save((err) => {
       logger.error(err);

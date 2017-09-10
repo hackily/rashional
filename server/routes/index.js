@@ -2,14 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const imageController = require('../controller/imageController');
+const clinicController = require('../controller/clinicController');
 
 router.use(function(req,res,next){
   next(); // console.log('index.html from router - index.js');
 });
-
-
-//Post picture to clarifai api, which will return classification.
-//Also pass in longitude/latitude
 
 /**
  * @api {post} /api/post/predict Predict Single Image
@@ -40,7 +37,6 @@ router.use(function(req,res,next){
  */
 router.post('/api/post/predict', imageController.predictSingleImage);
 
-//Take numPicture, rashType, and return pictures
 /**
  * @api {get} /api/get/rashPictures Get Rash Pictures
  * @apiName getRashPictures
@@ -80,6 +76,37 @@ router.post('/api/post/predict', imageController.predictSingleImage);
  *       ]
  */
 router.get('/api/get/rashPictures', imageController.getRashPictures);
+
+
+/**
+ * @api {get} /api/get/clinics Get clinic locations
+ * @apiName getClinics
+ * @apiGroup getClinics
+ * @apiParam {Number} latitude
+ * @apiParam {String} longitude
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     [
+ *       {
+ *         "name": "Johns Hopkins Medical Services",
+ *         "latitude": "39.076660000000",
+ *         "longitude": "-76.683100000000",
+ *         "clinic_type": "general",
+ *         "phone": "1 (410) 874-1486",
+ *         "distanceFromUser": 14.456998355394386,
+ *         "distanceUnits": "imperial",
+ *         "url": "http://www.hopkinsmedicine.org/patients/odenton/index.html",
+ *         "_id": "59b4a2d1045e971596c9daf0",
+ *         "address": {
+ *           "locality": "Odenton",
+ *           "postal_code": "21113",
+ *           "country": "US"
+ *         }
+ *       },
+ *       ...
+ *     ]
+ */
+router.get('/api/get/clinics', clinicController.getClinics);
 
 
 module.exports = router;
