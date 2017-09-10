@@ -5,6 +5,8 @@ const bootstrap = require('./css/bootstrap.min.css')
 const bootstrap_1 = require('./css/bootstrap.css')
 const titleStyle = require('./main.css')
 const RashChart = require('./rashChart.jsx')
+const rashChart = require('./rashChart.css')
+
 
 
 class App extends React.Component {
@@ -42,7 +44,7 @@ class App extends React.Component {
       <h1>clicked {this.state.n} times</h1>
       <button onClick={this.handleClick.bind(this)}>click me!</button>
       <Message/>
-      <RashChart ref="rashChart" data = {this.state.data} />
+      <RashChart id ="chart" ref="rashChart" data = {this.state.data} />
     </div>
      </div>
     );

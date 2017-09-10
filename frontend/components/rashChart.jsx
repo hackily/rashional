@@ -1,5 +1,7 @@
 import React from 'react';
 import {BarChart} from 'react-easy-chart';
+const rashChart = require('./rashChart.css')
+
 
 class RashChart extends React.Component {
   constructor (props) {
@@ -21,10 +23,9 @@ class RashChart extends React.Component {
   }
 
   render () {
-    return <BarChart data={this.state.data}/>  
+    return <BarChart id="rashChart" data={this.state.data}/>
   }
 
 }
 
 module.exports = RashChart;
-

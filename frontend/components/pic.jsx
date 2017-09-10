@@ -31,7 +31,7 @@ class Pic extends React.Component {
 function makeRequest (method, url, body) {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
-    xhr.open(method, url, body);
+    xhr.open(method, url);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.onload = function () {
@@ -53,10 +53,11 @@ function makeRequest (method, url, body) {
     xhr.send(body);
   });
 }
-
-var data = "base64Image=asdf";
-makeRequest('POST', '/api/post/predict', body)
+//Get image, base64 it,  (compress?) then URI encode it
+var uriEncodedData = "base64Image=asdf";
+makeRequest('POST', '/api/post/predict', uriEncodedData)
 .then(function (data) {
+
   console.log(data);
 })
 .catch(function (err) {
