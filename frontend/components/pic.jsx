@@ -31,7 +31,7 @@ class Pic extends React.Component {
 function makeRequest (method, url, body) {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
-    xhr.open(method, url);
+    xhr.open(method, url, body);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.onload = function () {
