@@ -20,7 +20,7 @@ class Pic extends React.Component {
           identifying rash's that would require emergency care.
           Please take or upload a photo for a predictive analysis!
         </div>
-        <div className="image-upload">
+        <div id ="start" className="image-upload">
           <label htmlFor="file-input">
             <img src="/img/camera.png"/>
           </label>

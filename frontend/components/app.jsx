@@ -27,7 +27,7 @@ class App extends React.Component {
      longitude: 0,
      cardData:[]
     }
-    this.getLocation(); 
+    this.getLocation();
 }
 
   handleClick () {
@@ -63,7 +63,7 @@ class App extends React.Component {
         </div>
 				<section id="cta">
 					<header>
-						<h2>Ready to take control of your <strong>health</strong>?</h2>
+						<h2>Ready to take control of your health?</h2>
 						<h5>We have taken the liberty of finding you several free clinics nearby.</h5>
 					</header>
 				</section>
@@ -74,7 +74,7 @@ class App extends React.Component {
       </div>
     )
   }
-  
+
   // <LocationCards id="location" ref="locationsCards" data = {this.state.cardData[0]}/>
 
   //Get location and then update state with values

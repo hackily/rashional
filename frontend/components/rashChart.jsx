@@ -16,14 +16,14 @@ class RashChart extends React.Component {
 
   render () {
     return <div id="graph">
-      <BarChart 
-    colorBars 
+      <BarChart
+    colorBars
     axisLabels={{x: 'Rash Source', y: 'Estimated Probability of Cause'}}
     axes
     height = {500}    
     data={this.state.data}
     colorbar
-    />  
+    />
     </div>
   }
 
