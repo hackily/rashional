@@ -48,6 +48,10 @@ label{
 padding-bottom: 5%;
 }
 
+#arrow {
+    color: white;
+}
+
 .topnav {
     background-color: #333;
     overflow: hidden;
