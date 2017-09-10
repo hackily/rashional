@@ -111,7 +111,7 @@ class App extends React.Component {
     _.each(arr.disease, (disease) => {
       const obj = {
         'x': disease.name,
-        'y': disease.value
+        'y': disease.value*100
       };
       formattedData.push(obj);
     });

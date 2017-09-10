@@ -22,11 +22,10 @@ class RashChart extends React.Component {
     axes
     height = {500}    
     data={this.state.data}
-    colorbar
+    yDomainRange={[0,100]}
     />
     </div>
   }
-
 }
 
 module.exports = RashChart;
