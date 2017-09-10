@@ -1,11 +1,10 @@
 const React = require('react');
+const Message = require('./message.jsx')
 const Pic = require('./pic.jsx');
 const bootstrap = require('./css/bootstrap.min.css')
 const bootstrap_1 = require('./css/bootstrap.css')
 const titleStyle = require('./main.css')
-const Message = require('./message.jsx')
 const RashChart = require('./rashChart.jsx')
-
 class App extends React.Component {
   constructor() {
     super()

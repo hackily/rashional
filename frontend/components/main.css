@@ -13,3 +13,7 @@ h1{
   color: white;
   font-size: 600%;
 }
+
+label{
+  display: block;
+}
