@@ -2,6 +2,7 @@
     width: 100vw;
     padding-right: 0px;
     padding-left: 0px;
+    max-width: 100%;
 }
 
 .jumbotron{
@@ -20,4 +21,9 @@ label{
 
 #chart{
 
+}
+
+img.heart{
+  width: 7%;
+  display: inline-block;
 }
