@@ -4,9 +4,15 @@
         "node": true
     },
     "parserOptions": {
-        "ecmaVersion": 6
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "extends": "eslint:recommended",
+    "plugins": [
+        "react"
+    ],
     "rules": {
         "indent": [
             "warn",

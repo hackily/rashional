@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const express = require('express');
 const router = express.Router();
 const imageController = require('../controller/imageController');
@@ -56,7 +56,7 @@ router.use(function(req,res,next){
 router.post('/api/post/predict', imageController.predictSingleImage);
 router.post('/api/post/mockPredict', function(req, res, next){
   res.send(mockPredict);
-})
+});
 
 /**
  * @api {get} /api/get/rashPictures Get Rash Pictures

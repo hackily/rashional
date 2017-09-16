@@ -1,30 +1,29 @@
 const React = require('react');
-const bootstrap = require('./css/bootstrap.min.css')
-const boxStyle = require('./pic.css')
 
 class Pic extends React.Component {
   constructor(props) {
-    super()
+    super();
     this.props = props;
     this.state = {
       imageFile: {},
       base64Image: ''
-    }
+    };
+    this.divStyle = {
+      display: 'none'
+    };
   }
+
 
   render() {
     return (
-      <div>
-        <div className="description">
-          Welcome to <b>Rashional</b>! A machine learning hack aimed at
-          identifying rash's that would require emergency care.
-          Please take or upload a photo for a predictive analysis!
-        </div>
-        <div id ="start" className="image-upload">
+      <div className="columns is-mobile is-centered">
+        <div id ="start" className="image-upload column is-one-quarter is-narrow">
           <label htmlFor="file-input">
-            <img className="upload-picture" src="/img/camera.png"/>
+            <img className="upload-picture" src="/img/camera-upload.png" style={{cursor: "pointer"}}/>
           </label>
-          <input id="file-input" type="file" className="input" accept="image/*;capture=camera" onChange={(e) => this.readFile(e)}></input>
+          <input id="file-input" type="file" style={this.divStyle}
+            className="input" accept="image/*;capture=camera" 
+            onChange={(e) => this.readFile(e)}></input>
         </div>
       </div>
     );
@@ -32,22 +31,20 @@ class Pic extends React.Component {
 
   readFile(data) {
     const files = data.target.files;
-    const self = this;
     if(files && files[0] ) {
-    let reader = new FileReader();
-    let file = files[0];
-    reader.onloadend = () => {
-      let splitFile = reader.result.split(',');
-      this.setState({
-        imageFile: file,
-        base64Image: splitFile[1]
-      });
-      this.props.onPicture(this.state.base64Image);
+      let reader = new FileReader();
+      let file = files[0];
+      reader.onloadend = () => {
+        let splitFile = reader.result.split(',');
+        this.setState({
+          imageFile: file,
+          base64Image: splitFile[1]
+        });
+        this.props.onPicture(this.state.base64Image);
+      };
+      reader.readAsDataURL(file);
     }
-    reader.readAsDataURL(file)
-    }
-  };
-
+  }
 }
 
 module.exports = Pic;
