@@ -1,5 +1,5 @@
 node_modules/*
 ./public/scripts/bundle.js
 ./manifest-vpc.yml
-./manifest.yml
+manifest.yml
 ./server/localConfig.json

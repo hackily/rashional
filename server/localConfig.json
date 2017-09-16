@@ -3,7 +3,7 @@
     "appURL": "http://localhost:5000",
     "clarifaiAPIKey": "",
     "rashionalModelId": "rashional",
-    "mongodbConnectionString": "mongodb://<user>:<password>@ds036967.mlab.com:36967",
+    "mongodbConnectionString": "",
     "mongodbName": "rashional"
   }
 }
