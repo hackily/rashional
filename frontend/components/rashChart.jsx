@@ -1,31 +1,32 @@
 import React from 'react';
-import {BarChart} from 'react-easy-chart';
-const rashChart = require('./rashChart.css')
+import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+//const rashChart = require('./rashChart.css');
 
 
 class RashChart extends React.Component {
   constructor (props) {
-    super()
+    super();
     this.state = {data: props.data};
   }
 
   updateChart () {
-    console.log("Data called!", this.state, this.state.data[0].y)
-    this.forceUpdate()
+    this.forceUpdate();
   }
 
   render () {
     return <div id="graph">
-      <BarChart
-    colorBars
-    axisLabels={{x: 'Rash Source', y: 'Estimated Probability of Cause'}}
-    axes
-    height = {500}
-    width = {window.innerWidth * 0.8}
-    data = {this.state.data}
-    yDomainRange={[0,100]}
-    />
-    </div>
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart 
+          data={this.state.data}
+          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+          <XAxis dataKey="name"/>
+          <YAxis domain={[0, 100]}/>
+          <CartesianGrid strokeDasharray="3 3"/>
+          <Tooltip/>
+          <Bar dataKey="c" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>;
   }
 }
 
