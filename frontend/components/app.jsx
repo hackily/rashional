@@ -89,7 +89,6 @@ class App extends React.Component {
       'longitude': this.state.longitude
     }).then((res) => {
       document.getElementById('results-container').style.display = "block";
-      const data = res.data;
       this.setState({ predictionData: res.data });
       this.initChartData(res.data);
       this.setPredictionText(res.data, this.state.lang);
@@ -125,8 +124,8 @@ class App extends React.Component {
     let formattedData = [];
     _.each(arr.disease, (disease) => {
       const obj = {
-        'x': disease.name,
-        'y': disease.value*100  
+        'name': disease.name,
+        'c': disease.value*100
       };
       formattedData.push(obj);
     });
