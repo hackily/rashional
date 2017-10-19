@@ -3,6 +3,8 @@ Rashional
 
 This is an application that uses Machine Learning to identify if a rash might be a symptom of one of several serious diseases.
 
+https://rashional.run.aws-usw02-pr.ice.predix.io/
+
 ## Development
 The following shows how to get started with developing on this app
 
